@@ -745,6 +745,14 @@ class Calendar extends React.Component {
      * or custom `Function(events, minimumStartDifference, slotMetrics, accessors)`
      */
     dayLayoutAlgorithm: DayLayoutAlgorithmPropType,
+
+    /**
+     *
+     * Limits the number of events displayed on a day.
+     * When there are too many events, a link that looks like “+2 more” is displayed.
+     * The exact action that happens when the user clicks the link is determined by 'onShowMore'.
+     */
+    eventLimit: PropTypes.number,
   }
 
   static defaultProps = {

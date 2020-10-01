@@ -26,19 +26,22 @@ class MonthView extends React.Component {
   constructor(...args) {
     super(...args)
 
+    const { eventLimit } = this.props
+
     this._bgRows = []
     this._pendingSelection = []
     this.slotRowRef = React.createRef()
     this.state = {
-      rowLimit: 5,
-      needLimitMeasure: true,
+      rowLimit: eventLimit || 5,
+      needLimitMeasure: !eventLimit,
     }
   }
 
   UNSAFE_componentWillReceiveProps({ date }) {
-    this.setState({
-      needLimitMeasure: !dates.eq(date, this.props.date, 'month'),
-    })
+    !this.props.eventLimit &&
+      this.setState({
+        needLimitMeasure: !dates.eq(date, this.props.date, 'month'),
+      })
   }
 
   componentDidMount() {
@@ -46,18 +49,19 @@ class MonthView extends React.Component {
 
     if (this.state.needLimitMeasure) this.measureRowLimit(this.props)
 
-    window.addEventListener(
-      'resize',
-      (this._resizeListener = () => {
-        if (!running) {
-          animationFrame.request(() => {
-            running = false
-            this.setState({ needLimitMeasure: true }) //eslint-disable-line
-          })
-        }
-      }),
-      false
-    )
+    !this.props.eventLimit &&
+      window.addEventListener(
+        'resize',
+        (this._resizeListener = () => {
+          if (!running) {
+            animationFrame.request(() => {
+              running = false
+              this.setState({ needLimitMeasure: true }) //eslint-disable-line
+            })
+          }
+        }),
+        false
+      )
   }
 
   componentDidUpdate() {
@@ -353,6 +357,8 @@ MonthView.propTypes = {
       y: PropTypes.number,
     }),
   ]),
+
+  eventLimit: PropTypes.number,
 }
 
 MonthView.range = (date, { localizer }) => {
