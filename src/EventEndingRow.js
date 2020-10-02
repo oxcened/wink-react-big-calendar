@@ -77,7 +77,12 @@ class EventEndingRow extends React.Component {
   }
 
   renderShowMore(segments, slot) {
-    let { localizer, onShowMoreMouseEnter, onShowMoreMouseLeave } = this.props
+    let {
+      localizer,
+      onShowMoreMouseEnter,
+      onShowMoreMouseLeave,
+      range,
+    } = this.props
     let count = eventsInSlot(segments, slot)
 
     return count ? (
@@ -89,7 +94,7 @@ class EventEndingRow extends React.Component {
         onMouseEnter={e => onShowMoreMouseEnter && onShowMoreMouseEnter(e)}
         onMouseLeave={e => onShowMoreMouseLeave && onShowMoreMouseLeave(e)}
       >
-        {localizer.messages.showMore(count)}
+        {localizer.messages.showMore(count, range[slot - 1])}
       </a>
     ) : (
       false
@@ -109,6 +114,7 @@ EventEndingRow.propTypes = {
   onShowMoreMouseEnter: PropTypes.func,
   onShowMoreMouseLeave: PropTypes.func,
   eventLimitExcludeShowMore: PropTypes.bool,
+  range: PropTypes.array,
   ...EventRowMixin.propTypes,
 }
 

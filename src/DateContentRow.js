@@ -144,6 +144,7 @@ class DateContentRow extends React.Component {
       onShowMoreMouseEnter,
       onShowMoreMouseLeave,
       eventLimitExcludeShowMore,
+      range,
     }
 
     return (
@@ -178,6 +179,7 @@ class DateContentRow extends React.Component {
               <EventEndingRow
                 segments={extra}
                 onShowMore={this.handleShowMore}
+                range={range}
                 {...eventRowProps}
               />
             )}
