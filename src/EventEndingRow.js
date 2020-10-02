@@ -74,7 +74,7 @@ class EventEndingRow extends React.Component {
   }
 
   renderShowMore(segments, slot) {
-    let { localizer, onEnterShowMore, onLeaveShowMore } = this.props
+    let { localizer, onShowMoreMouseEnter, onShowMoreMouseLeave } = this.props
     let count = eventsInSlot(segments, slot)
 
     return count ? (
@@ -83,8 +83,8 @@ class EventEndingRow extends React.Component {
         href="#"
         className={'rbc-show-more'}
         onClick={e => this.showMore(slot, e)}
-        onMouseEnter={e => onEnterShowMore && onEnterShowMore(e)}
-        onMouseLeave={e => onLeaveShowMore && onLeaveShowMore(e)}
+        onMouseEnter={e => onShowMoreMouseEnter && onShowMoreMouseEnter(e)}
+        onMouseLeave={e => onShowMoreMouseLeave && onShowMoreMouseLeave(e)}
       >
         {localizer.messages.showMore(count)}
       </a>

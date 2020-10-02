@@ -747,7 +747,6 @@ class Calendar extends React.Component {
     dayLayoutAlgorithm: DayLayoutAlgorithmPropType,
 
     /**
-     *
      * Limits the number of events displayed on a day.
      * When there are too many events, a link that looks like “+2 more” is displayed.
      * The exact action that happens when the user clicks the link is determined by 'onShowMore'.
@@ -755,11 +754,14 @@ class Calendar extends React.Component {
     eventLimit: PropTypes.number,
 
     /**
-     *
-     * To handle the hover event on “+2 more”
+     * onMouseEnter callback for the showMore link
      */
-    onEnterShowMore: PropTypes.func,
-    onLeaveShowMore: PropTypes.func,
+    onShowMoreMouseEnter: PropTypes.func,
+
+    /**
+     * onMouseLeave callback for the showMore link
+     */
+    onShowMoreMouseLeave: PropTypes.func,
   }
 
   static defaultProps = {
