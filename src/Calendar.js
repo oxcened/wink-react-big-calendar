@@ -753,6 +753,13 @@ class Calendar extends React.Component {
      * The exact action that happens when the user clicks the link is determined by 'onShowMore'.
      */
     eventLimit: PropTypes.number,
+
+    /**
+     *
+     * To handle the hover event on “+2 more”
+     */
+    onEnterShowMore: PropTypes.func,
+    onLeaveShowMore: PropTypes.func,
   }
 
   static defaultProps = {
