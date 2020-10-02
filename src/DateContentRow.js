@@ -117,8 +117,10 @@ class DateContentRow extends React.Component {
       resourceId,
       longPressThreshold,
       isAllDay,
+
       onShowMoreMouseEnter,
       onShowMoreMouseLeave,
+      eventLimitExcludeShowMore,
     } = this.props
 
     if (renderForMeasure) return this.renderDummy()
@@ -141,6 +143,7 @@ class DateContentRow extends React.Component {
       slotMetrics: metrics,
       onShowMoreMouseEnter,
       onShowMoreMouseLeave,
+      eventLimitExcludeShowMore,
     }
 
     return (
@@ -222,6 +225,7 @@ DateContentRow.propTypes = {
 
   onShowMoreMouseEnter: PropTypes.func,
   onShowMoreMouseLeave: PropTypes.func,
+  eventLimitExcludeShowMore: PropTypes.bool,
 }
 
 DateContentRow.defaultProps = {

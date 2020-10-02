@@ -108,6 +108,7 @@ class MonthView extends React.Component {
       getters,
       onShowMoreMouseEnter,
       onShowMoreMouseLeave,
+      eventLimitExcludeShowMore,
     } = this.props
 
     const { needLimitMeasure, rowLimit } = this.state
@@ -144,6 +145,7 @@ class MonthView extends React.Component {
         rtl={this.props.rtl}
         onShowMoreMouseEnter={onShowMoreMouseEnter}
         onShowMoreMouseLeave={onShowMoreMouseLeave}
+        eventLimitExcludeShowMore={eventLimitExcludeShowMore}
       />
     )
   }
@@ -363,6 +365,7 @@ MonthView.propTypes = {
   ]),
 
   eventLimit: PropTypes.number,
+  eventLimitExcludeShowMore: PropTypes.bool,
 
   onShowMoreMouseEnter: PropTypes.func,
   onShowMoreMouseLeave: PropTypes.func,

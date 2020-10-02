@@ -754,6 +754,11 @@ class Calendar extends React.Component {
     eventLimit: PropTypes.number,
 
     /**
+     * Whether to exclude the showMore link from the eventLimit count
+     */
+    eventLimitExcludeShowMore: PropTypes.bool,
+
+    /**
      * onMouseEnter callback for the showMore link
      */
     onShowMoreMouseEnter: PropTypes.func,

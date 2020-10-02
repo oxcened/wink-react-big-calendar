@@ -64,13 +64,16 @@ class EventEndingRow extends React.Component {
   }
 
   canRenderSlotEvent(slot, span) {
-    let { segments } = this.props
+    let { segments, eventLimitExcludeShowMore } = this.props
 
-    return range(slot, slot + span).every(s => {
-      let count = eventsInSlot(segments, s)
+    return (
+      !eventLimitExcludeShowMore &&
+      range(slot, slot + span).every(s => {
+        let count = eventsInSlot(segments, s)
 
-      return count === 1
-    })
+        return count === 1
+      })
+    )
   }
 
   renderShowMore(segments, slot) {
@@ -105,6 +108,7 @@ EventEndingRow.propTypes = {
   onShowMore: PropTypes.func,
   onShowMoreMouseEnter: PropTypes.func,
   onShowMoreMouseLeave: PropTypes.func,
+  eventLimitExcludeShowMore: PropTypes.bool,
   ...EventRowMixin.propTypes,
 }
 
