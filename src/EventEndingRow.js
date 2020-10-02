@@ -103,6 +103,8 @@ EventEndingRow.propTypes = {
   segments: PropTypes.array,
   slots: PropTypes.number,
   onShowMore: PropTypes.func,
+  onShowMoreMouseEnter: PropTypes.func,
+  onShowMoreMouseLeave: PropTypes.func,
   ...EventRowMixin.propTypes,
 }
 

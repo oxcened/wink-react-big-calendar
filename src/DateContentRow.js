@@ -117,6 +117,8 @@ class DateContentRow extends React.Component {
       resourceId,
       longPressThreshold,
       isAllDay,
+      onShowMoreMouseEnter,
+      onShowMoreMouseLeave,
     } = this.props
 
     if (renderForMeasure) return this.renderDummy()
@@ -137,6 +139,8 @@ class DateContentRow extends React.Component {
       onKeyPress,
       resourceId,
       slotMetrics: metrics,
+      onShowMoreMouseEnter,
+      onShowMoreMouseLeave,
     }
 
     return (
@@ -215,6 +219,9 @@ DateContentRow.propTypes = {
 
   minRows: PropTypes.number.isRequired,
   maxRows: PropTypes.number.isRequired,
+
+  onShowMoreMouseEnter: PropTypes.func,
+  onShowMoreMouseLeave: PropTypes.func,
 }
 
 DateContentRow.defaultProps = {

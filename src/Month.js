@@ -106,6 +106,8 @@ class MonthView extends React.Component {
       longPressThreshold,
       accessors,
       getters,
+      onShowMoreMouseEnter,
+      onShowMoreMouseLeave,
     } = this.props
 
     const { needLimitMeasure, rowLimit } = this.state
@@ -140,6 +142,8 @@ class MonthView extends React.Component {
         onSelectSlot={this.handleSelectSlot}
         longPressThreshold={longPressThreshold}
         rtl={this.props.rtl}
+        onShowMoreMouseEnter={onShowMoreMouseEnter}
+        onShowMoreMouseLeave={onShowMoreMouseLeave}
       />
     )
   }
@@ -359,6 +363,9 @@ MonthView.propTypes = {
   ]),
 
   eventLimit: PropTypes.number,
+
+  onShowMoreMouseEnter: PropTypes.func,
+  onShowMoreMouseLeave: PropTypes.func,
 }
 
 MonthView.range = (date, { localizer }) => {
