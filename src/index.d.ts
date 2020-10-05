@@ -309,8 +309,8 @@ export interface CalendarProps<TEvent extends object = Event, TResource extends 
     onShowMore?: (events: TEvent[], date: Date) => void;
     eventLimit?: number,
     eventLimitExcludeShowMore?: boolean,
-    onShowMoreMouseEnter?: (e: globalThis.Event) => void,
-    onShowMoreMouseLeave?: (e: globalThis.Event) => void,
+    onShowMoreMouseEnter?: (e: globalThis.Event, date: Date, events: Event[]) => void,
+    onShowMoreMouseLeave?: (e: globalThis.Event, date: Date, events: Event[]) => void,
 }
 
 export interface TitleOptions {

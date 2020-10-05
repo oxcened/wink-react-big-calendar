@@ -84,6 +84,7 @@ class EventEndingRow extends React.Component {
       range,
     } = this.props
     let slotEvents = eventsInSlot(segments, slot)
+    const date = range[slot - 1]
 
     return slotEvents.length ? (
       <a
@@ -91,12 +92,18 @@ class EventEndingRow extends React.Component {
         href="#"
         className={'rbc-show-more'}
         onClick={e => this.showMore(slot, e)}
-        onMouseEnter={e => onShowMoreMouseEnter && onShowMoreMouseEnter(e)}
-        onMouseLeave={e => onShowMoreMouseLeave && onShowMoreMouseLeave(e)}
+        onMouseEnter={e =>
+          onShowMoreMouseEnter &&
+          onShowMoreMouseEnter(e, date, slotEvents.map(e => e.event))
+        }
+        onMouseLeave={e =>
+          onShowMoreMouseLeave &&
+          onShowMoreMouseLeave(e, date, slotEvents.map(e => e.event))
+        }
       >
         {localizer.messages.showMore(
           slotEvents.length,
-          range[slot - 1],
+          date,
           slotEvents.map(e => e.event)
         )}
       </a>
