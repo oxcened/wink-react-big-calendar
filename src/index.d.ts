@@ -224,7 +224,7 @@ export interface Messages {
     tomorrow?: string;
     today?: string;
     agenda?: string;
-    showMore?: (count: number, date: Date) => string;
+    showMore?: (count: number, date: Date, events: Event[]) => string;
     noEventsInRange?: string;
 }
 
@@ -309,8 +309,8 @@ export interface CalendarProps<TEvent extends object = Event, TResource extends 
     onShowMore?: (events: TEvent[], date: Date) => void;
     eventLimit?: number,
     eventLimitExcludeShowMore?: boolean,
-    onShowMoreMouseEnter?: (e: Event) => void,
-    onShowMoreMouseLeave?: (e: Event) => void,
+    onShowMoreMouseEnter?: (e: globalThis.Event) => void,
+    onShowMoreMouseLeave?: (e: globalThis.Event) => void,
 }
 
 export interface TitleOptions {

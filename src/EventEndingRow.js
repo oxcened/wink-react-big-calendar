@@ -6,7 +6,7 @@ import range from 'lodash/range'
 
 let isSegmentInSlot = (seg, slot) => seg.left <= slot && seg.right >= slot
 let eventsInSlot = (segments, slot) =>
-  segments.filter(seg => isSegmentInSlot(seg, slot)).length
+  segments.filter(seg => isSegmentInSlot(seg, slot))
 
 class EventEndingRow extends React.Component {
   render() {
@@ -69,7 +69,7 @@ class EventEndingRow extends React.Component {
     return (
       !eventLimitExcludeShowMore &&
       range(slot, slot + span).every(s => {
-        let count = eventsInSlot(segments, s)
+        let count = eventsInSlot(segments, s).length
 
         return count === 1
       })
@@ -83,9 +83,9 @@ class EventEndingRow extends React.Component {
       onShowMoreMouseLeave,
       range,
     } = this.props
-    let count = eventsInSlot(segments, slot)
+    let slotEvents = eventsInSlot(segments, slot)
 
-    return count ? (
+    return slotEvents.length ? (
       <a
         key={'sm_' + slot}
         href="#"
@@ -94,7 +94,11 @@ class EventEndingRow extends React.Component {
         onMouseEnter={e => onShowMoreMouseEnter && onShowMoreMouseEnter(e)}
         onMouseLeave={e => onShowMoreMouseLeave && onShowMoreMouseLeave(e)}
       >
-        {localizer.messages.showMore(count, range[slot - 1])}
+        {localizer.messages.showMore(
+          slotEvents.length,
+          range[slot - 1],
+          slotEvents
+        )}
       </a>
     ) : (
       false
