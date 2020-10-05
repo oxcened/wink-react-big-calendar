@@ -97,7 +97,7 @@ class EventEndingRow extends React.Component {
         {localizer.messages.showMore(
           slotEvents.length,
           range[slot - 1],
-          slotEvents
+          slotEvents.map(e => e.event)
         )}
       </a>
     ) : (
