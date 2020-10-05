@@ -17,8 +17,8 @@
 //                 Jan Michalak <https://github.com/michalak111>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 // TypeScript Version: 2.8
-import PropTypes, { Validator } from 'prop-types';
-import * as React from 'react';
+import { Validator } from 'prop-types'
+import * as React from 'react'
 
 export type DayPropGetter = (date: Date) => { className?: string, style?: React.CSSProperties };
 export type EventPropGetter<T> = (event: T, start: stringOrDate, end: stringOrDate, isSelected: boolean) => { className?: string, style?: React.CSSProperties };
